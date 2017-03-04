@@ -16,4 +16,5 @@
 #' @importFrom rvest html_nodes html_table
 #' @importFrom dplyr filter select mutate as_data_frame
 #' @importFrom stringi stri_replace_first_regex stri_split_fixed stri_detect_regex
+#' @importFrom rio import
 NULL

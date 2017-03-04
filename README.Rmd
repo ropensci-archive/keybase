@@ -9,9 +9,12 @@ output: rmarkdown::github_document
 The following functions are implemented:
 
 - `kb_discover`:	Check Keybase membership and retrieve basic user info
+- `kb_file_exists`:	See if a file exists
 - `kb_get_public_keys`:	Retrive the public key(s) for a given user
-- `kb_list_files`:	List files/directories in a user's public folder
+- `kb_list_files`:	List directory path contents in a Keybase user's public folder
 - `kb_lookup`:	Retrieve info on Keybase user(s)
+- `kb_raw_url`:	Turn a user + path into a Keybase "raw" URL
+- `kb_read_file`:	Read a resource (file) from a Keybase public folder
 
 ### Installation
 
@@ -27,6 +30,7 @@ options(width=120)
 
 ```{r message=FALSE, warning=FALSE, error=FALSE}
 library(keybase)
+library(tidyverse)
 
 # current verison
 packageVersion("keybase")
@@ -40,6 +44,33 @@ kb_lookup("karthik")
 kb_list_files("marcopolo")
 
 kb_list_files("marcopolo", pattern="\\.txt")
+```
+
+### Safe(r) data sharing
+
+```{r}
+kb_list_files("hrbrmstr", "data")
+
+kb_file_exists("hrbrmstr", "index.md")
+
+kb_file_exists("https://hrbrmstr.keybase.pub/data/Rlogo.pngd")
+
+kb_raw_url("hrbrmstr", "data/Rlogo.png")
+
+kb_file_exists("hrbrmstr", "data/Rlogo.png")
+
+kb_file_exists(kb_raw_url("hrbrmstr", "data/Rlogo.png"))
+
+kb_read_file("hrbrmstr", "data/mtcars.csv")
+
+kb_read_file("hrbrmstr", "data/mtcars.json")
+
+# need (for now) to use the "raw" URL for things `rio::import()` can't natively read
+
+kb_list_files("hrbrmstr", "data", pattern = ".*.png") %>% 
+  select(raw_url)
+
+magick::image_read("https://hrbrmstr.keybase.pub/data/Rlogo.png")
 ```
 
 ### Test Results

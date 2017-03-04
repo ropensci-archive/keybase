@@ -28,5 +28,6 @@ Imports:
     xml2,
     rvest,
     dplyr,
-    stringi
+    stringi,
+    rio
 RoxygenNote: 6.0.1

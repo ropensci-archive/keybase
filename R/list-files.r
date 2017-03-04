@@ -1,8 +1,8 @@
-#' List files/directories in a user's public folder
+#' List directory path contents in a Keybase user's public folder
 #'
 #' @md
 #' @param user Keybase user ID or a `keybase.pub` URL
-#' @param path (optional) path (relative from the top level of the public folder).
+#' @param path (optional) directory path (relative from the top level of the public folder).
 #'        If `user` is a URL this parameter is ignored.
 #' @param pattern if not `NULL`, then the file list will be filtered using the
 #'        `stringi`-acceptable regular expression passed in

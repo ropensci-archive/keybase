@@ -2,14 +2,14 @@
 % Please edit documentation in R/list-files.r
 \name{kb_list_files}
 \alias{kb_list_files}
-\title{List files/directories in a user's public folder}
+\title{List directory path contents in a Keybase user's public folder}
 \usage{
 kb_list_files(user, path, pattern = NULL)
 }
 \arguments{
 \item{user}{Keybase user ID or a \code{keybase.pub} URL}
 
-\item{path}{(optional) path (relative from the top level of the public folder).
+\item{path}{(optional) directory path (relative from the top level of the public folder).
 If \code{user} is a URL this parameter is ignored.}
 
 \item{pattern}{if not \code{NULL}, then the file list will be filtered using the
@@ -19,7 +19,7 @@ If \code{user} is a URL this parameter is ignored.}
 \code{tibble} with the directory listing results
 }
 \description{
-List files/directories in a user's public folder
+List directory path contents in a Keybase user's public folder
 }
 \examples{
 kb_list_files("marcopolo")
