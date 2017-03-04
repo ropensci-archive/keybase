@@ -2,9 +2,9 @@
 output: rmarkdown::github_document
 ---
 
-`keybase` : Tools to Ensure Data, Message and File Confidentiality and Integrity through the 'Keybase' 'API'
+`keybase` : Tools to Work with the 'Keybase' 'API'
 
-'Keybase' <https://keybase.io> is a directory of people and public keys and provides methods for obtaining public keys, validating users and exchanging files and/or messages in a secure fashion. Tools are provided to search for and retrieve information about 'Keybase' users, retrieve and import user public keys and list and/or download files.
+'Keybase' (<https://keybase.io>) is a directory of people and public keys and provides methods for obtaining public keys, validating users and exchanging files and/or messages in a secure fashion. Tools are provided to search for and retrieve information about 'Keybase' users, retrieve and import user public keys and list and/or download files.
     
 The following functions are implemented:
 
