@@ -1,0 +1,55 @@
+---
+output: rmarkdown::github_document
+---
+
+`keybase` : Tools to Ensure Data, Message and File Confidentiality and Integrity through the 'Keybase' 'API'
+
+'Keybase' <https://keybase.io> is a directory of people and public keys and provides methods for obtaining public keys, validating users and exchanging files and/or messages in a secure fashion. Tools are provided to search for and retrieve information about 'Keybase' users, retrieve and import user public keys and list and/or download files.
+    
+The following functions are implemented:
+
+- `kb_discover`:	Check Keybase membership and retrieve basic user info
+- `kb_get_public_keys`:	Retrive the public key(s) for a given user
+- `kb_list_files`:	List files/directories in a user's public folder
+- `kb_lookup`:	Retrieve info on Keybase user(s)
+
+### Installation
+
+```{r eval=FALSE}
+devtools::install_github("hrbrmstr/keybase")
+```
+
+```{r message=FALSE, warning=FALSE, error=FALSE, include=FALSE}
+options(width=120)
+```
+
+### Usage
+
+```{r message=FALSE, warning=FALSE, error=FALSE}
+library(keybase)
+
+# current verison
+packageVersion("keybase")
+
+kb_discover(twitter=c("hrbrmstr", "_inundata", "briandconnelly"), github="bearloga")
+
+kb_discover(twitter=c("sckottie", "_inundata", "briandconnelly"), kb_usernames_only=TRUE)
+
+kb_lookup("karthik")
+
+kb_list_files("marcopolo")
+
+kb_list_files("marcopolo", pattern="\\.txt")
+```
+
+### Test Results
+
+```{r message=FALSE, warning=FALSE, error=FALSE}
+library(keybase)
+library(testthat)
+
+date()
+
+test_dir("tests/")
+```
+
