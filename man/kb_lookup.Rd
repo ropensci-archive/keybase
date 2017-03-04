@@ -10,6 +10,8 @@ kb_lookup(users, fields = c("basics", "profile"))
 \method{print}{kbusers}(x, ...)
 }
 \arguments{
+\item{users}{vector of usernames / mails}
+
 \item{fields}{user information fields to return. Any combination of "all", basics",
 "cryptocurrency_addresses",  "pictures", "proofs_summary", "profile",
 "public_keys", "remote_key_proofs", "sigs". If left unchanged, the
@@ -20,8 +22,6 @@ returns all of fields.}
 \item{x}{object to print}
 
 \item{...}{unused}
-
-\item{vector}{of usernames / mails}
 }
 \value{
 \code{tibble}

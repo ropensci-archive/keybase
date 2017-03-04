@@ -1,7 +1,7 @@
 #' Retrieve info on Keybase user(s)
 #'
 #' @md
-#' @param vector of usernames / mails
+#' @param users vector of usernames / mails
 #' @param fields user information fields to return. Any combination of "all", basics",
 #'        "cryptocurrency_addresses",  "pictures", "proofs_summary", "profile",
 #'        "public_keys", "remote_key_proofs", "sigs". If left unchanged, the

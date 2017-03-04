@@ -5,6 +5,6 @@
 ^README\.*html$
 ^NOTES\.*Rmd$
 ^NOTES\.*html$
-^codecov\.yml$
 ^README_files$
 ^doc$
+^\.codecov.yml

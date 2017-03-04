@@ -1,0 +1,1 @@
+globalVariables(c("entry_type", "entry_url", "entry_name"))
