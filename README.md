@@ -3,6 +3,8 @@
 
 'Keybase' (<https://keybase.io>) is a directory of people and public keys and provides methods for obtaining public keys, validating users and exchanging files and/or messages in a secure fashion. Tools are provided to search for and retrieve information about 'Keybase' users, retrieve and import user public keys and list and/or download files.
 
+There's also a thin but useful R wrapper around many of they `keybase` command-line utility functions.
+
 The following functions are implemented:
 
 -   `kb_discover`: Check Keybase membership and retrieve basic user info
@@ -12,6 +14,14 @@ The following functions are implemented:
 -   `kb_lookup`: Retrieve info on Keybase user(s)
 -   `kb_raw_url`: Turn a user + path into a Keybase "raw" URL
 -   `kb_read_file`: Read a resource (file) from a Keybase public folder
+-   `kb_cmd`: Execute a keybase command-line command
+-   `kb_encrypt_file`: Encrypt a file
+-   `kb_decrypt_file`: Decrypt a file
+-   `kb_encrypt_msg`: Encrypt a message
+-   `kb_decrypt_msg`: Decrypt a message
+-   `kb_followers`: Get keybase followers
+-   `kb_following`: Get who you're following on keybase
+-   `kb_ping`: Test connectivity to the keybase server
 
 ### Installation
 
@@ -32,6 +42,12 @@ packageVersion("keybase")
     ## [1] '0.1.0'
 
 ``` r
+kb_ping()
+```
+
+    ## [1] TRUE
+
+``` r
 kb_discover(twitter=c("hrbrmstr", "_inundata", "briandconnelly"), github="bearloga")
 ```
 
@@ -40,7 +56,7 @@ kb_discover(twitter=c("hrbrmstr", "_inundata", "briandconnelly"), github="bearlo
     ##     <chr>                                                                                                       <chr>
     ## 1 twitter https://s3.amazonaws.com/keybase_processed_uploads/38131fa9393026d27f6d75f1b094cb05_200_200_square_200.jpeg
     ## 2 twitter https://s3.amazonaws.com/keybase_processed_uploads/cd9018fd484caa798769d9ebafa1b805_200_200_square_200.jpeg
-    ## 3 twitter https://s3.amazonaws.com/keybase_processed_uploads/338a884eaab8cde7da413e43c29f9805_200_200_square_200.jpeg
+    ## 3 twitter  https://s3.amazonaws.com/keybase_processed_uploads/476eef9fcc8b86ab4c0632fd0bc50705_200_200_square_200.png
     ## 4  github https://s3.amazonaws.com/keybase_processed_uploads/63abb0621ada307ed2ef1b09d2e14a05_200_200_square_200.jpeg
     ## # ... with 15 more variables: username <chr>, uid <chr>, full_name <chr>, ctime <dbl>,
     ## #   public_key.key_fingerprint <chr>, public_key.bits <int>, public_key.algo <int>, remote_proofs.dns <list>,
@@ -249,7 +265,7 @@ library(testthat)
 date()
 ```
 
-    ## [1] "Sat Mar  4 13:55:23 2017"
+    ## [1] "Sat Mar 18 08:40:54 2017"
 
 ``` r
 test_dir("tests/")

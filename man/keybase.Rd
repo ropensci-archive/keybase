@@ -9,7 +9,10 @@
 'Keybase' <keybase.io> is a directory of people and public keys and provides
 methods for obtaining public keys, validating users and exchanging files and/or messages
 in a secure fashion. Tools are provided to search for and retrieve information about
-'Keybase' users, retrieve and import user public keys and list and/or download files.
+'Keybase' users, retrieve and import user public keys and list and/or download files.\cr
+\cr
+There's also a thin but useful R wrapper around many of they \code{keybase} command-line
+utility functions.
 }
 \author{
 Bob Rudis (bob@rud.is)

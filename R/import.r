@@ -1,4 +1,3 @@
-
 #' See if a file exists
 #'
 #' @md
