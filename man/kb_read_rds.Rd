@@ -26,9 +26,13 @@ the space-time trade-off of different compression methods with
 \code{write_rds()} returns \code{x}, invisibly.
 }
 \description{
-Consistent wrapper around \code{\link[=saveRDS]{saveRDS()}} and \code{\link[=readRDS]{readRDS()}}.
-\code{kb_write_rds()} does not compress by default as space is generally cheaper
-than time.
+Specify the user(s) you want to share an R object with in a character vector
+using the Keybase user conventions outline \href{https://keybase.io/docs/kbfs}{in their kbfs introduction}.
+You do not need to specify yourself (the function takes care of adding you).
+}
+\details{
+Order of usernames does not matter as Keybase is smart enough to create and
+resolve dynamic symbolic links of all user combos.
 }
 \examples{
 \dontrun{

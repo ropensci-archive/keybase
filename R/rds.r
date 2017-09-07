@@ -1,8 +1,11 @@
 #' Share RDS files with other Keybase users
 #'
-#' Consistent wrapper around [saveRDS()] and [readRDS()].
-#' `kb_write_rds()` does not compress by default as space is generally cheaper
-#' than time.
+#' Specify the user(s) you want to share an R object with in a character vector
+#' using the Keybase user conventions outline [in their kbfs introduction](https://keybase.io/docs/kbfs).
+#' You do not need to specify yourself (the function takes care of adding you).
+#'
+#' Order of usernames does not matter as Keybase is smart enough to create and
+#' resolve dynamic symbolic links of all user combos.
 #'
 #' @md
 #' @param kb_users character vector of (other) Keybase user(s)

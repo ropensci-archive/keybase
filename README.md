@@ -15,6 +15,7 @@ General:
 -   `kb_cmd`: Execute a keybase command-line command
 -   `kb_followers`: Get keybase followers
 -   `kb_following`: Get who you're following on keybase
+-   `kb_whoami`: Who does Keybase think you are?
 
 Crypto
 
@@ -286,7 +287,7 @@ library(testthat)
 date()
 ```
 
-    ## [1] "Thu Sep  7 07:18:22 2017"
+    ## [1] "Thu Sep  7 07:25:05 2017"
 
 ``` r
 test_dir("tests/")

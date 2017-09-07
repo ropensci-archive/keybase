@@ -18,6 +18,7 @@ General:
 - `kb_cmd`:	Execute a keybase command-line command
 - `kb_followers`:	Get keybase followers
 - `kb_following`:	Get who you're following on keybase
+- `kb_whoami`:	Who does Keybase think you are?
 
 Crypto
 
