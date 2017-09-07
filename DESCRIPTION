@@ -1,8 +1,8 @@
 Package: keybase
 Type: Package
 Title: Tools to Work with the 'Keybase' 'API'
-Version: 0.1.0
-Date: 2017-03-18
+Version: 0.2.0
+Date: 2017-09-07
 Author: Bob Rudis (bob@rud.is)
 Maintainer: Bob Rudis <bob@rud.is>
 Description: 'Keybase' <keybase.io> is a directory of people and public keys and provides

@@ -24,3 +24,7 @@ kb_plain_to_raw_url <- function(lst) {
     sprintf("https://%s.keybase.pub/%s", x[1], x[2])
   })
 }
+
+.kb_user_info <- function() {
+  jsonlite::fromJSON("/keybase/public/.kbfs_status", flatten=TRUE)
+}

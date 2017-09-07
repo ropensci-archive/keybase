@@ -10,21 +10,39 @@ There's also a thin but useful R wrapper around many of they `keybase` command-l
     
 The following functions are implemented:
 
+General: 
+
 - `kb_discover`:	Check Keybase membership and retrieve basic user info
-- `kb_file_exists`:	See if a file exists
 - `kb_get_public_keys`:	Retrive the public key(s) for a given user
-- `kb_list_files`:	List directory path contents in a Keybase user's public folder
 - `kb_lookup`:	Retrieve info on Keybase user(s)
-- `kb_raw_url`:	Turn a user + path into a Keybase "raw" URL
-- `kb_read_file`:	Read a resource (file) from a Keybase public folder
 - `kb_cmd`:	Execute a keybase command-line command
+- `kb_followers`:	Get keybase followers
+- `kb_following`:	Get who you're following on keybase
+
+Crypto
+
 - `kb_encrypt_file`:	Encrypt a file
 - `kb_decrypt_file`:	Decrypt a file
 - `kb_encrypt_msg`:	Encrypt a message
 - `kb_decrypt_msg`:	Decrypt a message
-- `kb_followers`:	Get keybase followers
-- `kb_following`:	Get who you're following on keybase
+
+Filesystem:
+
+- `kb_list_files`:	List directory path contents in a Keybase user's public folder
+- `kb_file_exists`:	See if a file exists
+- `kb_read_file`:	Read a resource (file) from a Keybase public folder
+- `kb_read_rds`:	Share RDS files with other Keybase users
+- `kb_write_rds`:	Share RDS files with other Keybase users
+
+Utility:
+
+- `kb_raw_url`:	Turn a user + path into a Keybase "raw" URL
+
+Diagnostics:
+
 - `kb_ping`:	Test connectivity to the keybase server
+- `kbfs_errors`:	Retrieve KBFS error log
+- `kbfs_metrics`:	Retrieve KBFS performance metrics
 
 ### Installation
 

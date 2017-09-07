@@ -7,21 +7,39 @@ There's also a thin but useful R wrapper around many of they `keybase` command-l
 
 The following functions are implemented:
 
+General:
+
 -   `kb_discover`: Check Keybase membership and retrieve basic user info
--   `kb_file_exists`: See if a file exists
 -   `kb_get_public_keys`: Retrive the public key(s) for a given user
--   `kb_list_files`: List directory path contents in a Keybase user's public folder
 -   `kb_lookup`: Retrieve info on Keybase user(s)
--   `kb_raw_url`: Turn a user + path into a Keybase "raw" URL
--   `kb_read_file`: Read a resource (file) from a Keybase public folder
 -   `kb_cmd`: Execute a keybase command-line command
+-   `kb_followers`: Get keybase followers
+-   `kb_following`: Get who you're following on keybase
+
+Crypto
+
 -   `kb_encrypt_file`: Encrypt a file
 -   `kb_decrypt_file`: Decrypt a file
 -   `kb_encrypt_msg`: Encrypt a message
 -   `kb_decrypt_msg`: Decrypt a message
--   `kb_followers`: Get keybase followers
--   `kb_following`: Get who you're following on keybase
+
+Filesystem:
+
+-   `kb_list_files`: List directory path contents in a Keybase user's public folder
+-   `kb_file_exists`: See if a file exists
+-   `kb_read_file`: Read a resource (file) from a Keybase public folder
+-   `kb_read_rds`: Share RDS files with other Keybase users
+-   `kb_write_rds`: Share RDS files with other Keybase users
+
+Utility:
+
+-   `kb_raw_url`: Turn a user + path into a Keybase "raw" URL
+
+Diagnostics:
+
 -   `kb_ping`: Test connectivity to the keybase server
+-   `kbfs_errors`: Retrieve KBFS error log
+-   `kbfs_metrics`: Retrieve KBFS performance metrics
 
 ### Installation
 
@@ -39,7 +57,7 @@ library(tidyverse)
 packageVersion("keybase")
 ```
 
-    ## [1] '0.1.0'
+    ## [1] '0.2.0'
 
 ``` r
 kb_ping()
@@ -51,7 +69,7 @@ kb_ping()
 kb_discover(twitter=c("hrbrmstr", "_inundata", "briandconnelly"), github="bearloga")
 ```
 
-    ## # A tibble: 4 × 17
+    ## # A tibble: 4 x 17
     ##   service                                                                                                   thumbnail
     ##     <chr>                                                                                                       <chr>
     ## 1 twitter https://s3.amazonaws.com/keybase_processed_uploads/38131fa9393026d27f6d75f1b094cb05_200_200_square_200.jpeg
@@ -61,14 +79,14 @@ kb_discover(twitter=c("hrbrmstr", "_inundata", "briandconnelly"), github="bearlo
     ## # ... with 15 more variables: username <chr>, uid <chr>, full_name <chr>, ctime <dbl>,
     ## #   public_key.key_fingerprint <chr>, public_key.bits <int>, public_key.algo <int>, remote_proofs.dns <list>,
     ## #   remote_proofs.generic_web_site <list>, remote_proofs.twitter <chr>, remote_proofs.github <chr>,
-    ## #   remote_proofs.reddit <lgl>, remote_proofs.hackernews <chr>, remote_proofs.coinbase <chr>,
+    ## #   remote_proofs.reddit <lgl>, remote_proofs.hackernews <chr>, remote_proofs.coinbase <lgl>,
     ## #   remote_proofs.facebook <chr>
 
 ``` r
 kb_discover(twitter=c("sckottie", "_inundata", "briandconnelly"), kb_usernames_only=TRUE)
 ```
 
-    ## # A tibble: 3 × 2
+    ## # A tibble: 3 x 2
     ##   service       username
     ##     <chr>          <chr>
     ## 1 twitter         sckott
@@ -79,7 +97,7 @@ kb_discover(twitter=c("sckottie", "_inundata", "briandconnelly"), kb_usernames_o
 kb_lookup("karthik")
 ```
 
-    ## # A tibble: 1 × 12
+    ## # A tibble: 1 x 12
     ##                                 id basics.username basics.ctime basics.mtime basics.id_version basics.track_version
     ## *                            <chr>           <chr>        <int>        <int>             <int>                <int>
     ## 1 ea14f1c4bd8b781c02d94c5599abc800         karthik   1402722848   1402722848                25                    6
@@ -90,28 +108,31 @@ kb_lookup("karthik")
 kb_list_files("marcopolo")
 ```
 
-    ## # A tibble: 12 × 4
+    ## # A tibble: 15 x 4
     ##                entry_name entry_type                                            entry_url
     ##                     <chr>      <chr>                                                <chr>
-    ## 1     construction_files/        dir    https://keybase.pub/marcopolo/construction_files/
-    ## 2                  games/        dir                 https://keybase.pub/marcopolo/games/
-    ## 3                  stuff/        dir                 https://keybase.pub/marcopolo/stuff/
-    ## 4           trip-reports/        dir          https://keybase.pub/marcopolo/trip-reports/
-    ## 5                website/        dir               https://keybase.pub/marcopolo/website/
-    ## 6         Classy Dyno.mp4       file      https://keybase.pub/marcopolo/Classy%20Dyno.mp4
-    ## 7        banana-bread.txt       file       https://keybase.pub/marcopolo/banana-bread.txt
-    ## 8              id_rsa.pub       file             https://keybase.pub/marcopolo/id_rsa.pub
-    ## 9              index.html       file             https://keybase.pub/marcopolo/index.html
-    ## 10       loading demo.mov       file     https://keybase.pub/marcopolo/loading%20demo.mov
-    ## 11 signal_fingerprint.txt       file https://keybase.pub/marcopolo/signal_fingerprint.txt
-    ## 12                 slides       file                 https://keybase.pub/marcopolo/slides
+    ##  1    construction_files/        dir    https://keybase.pub/marcopolo/construction_files/
+    ##  2                 games/        dir                 https://keybase.pub/marcopolo/games/
+    ##  3           self-rescue/        dir           https://keybase.pub/marcopolo/self-rescue/
+    ##  4                 stuff/        dir                 https://keybase.pub/marcopolo/stuff/
+    ##  5          trip-reports/        dir          https://keybase.pub/marcopolo/trip-reports/
+    ##  6                   van/        dir                   https://keybase.pub/marcopolo/van/
+    ##  7               website/        dir               https://keybase.pub/marcopolo/website/
+    ##  8        Classy Dyno.mp4       file      https://keybase.pub/marcopolo/Classy%20Dyno.mp4
+    ##  9       banana-bread.txt       file       https://keybase.pub/marcopolo/banana-bread.txt
+    ## 10       deal-with-it.gif       file       https://keybase.pub/marcopolo/deal-with-it.gif
+    ## 11             id_rsa.pub       file             https://keybase.pub/marcopolo/id_rsa.pub
+    ## 12             index.html       file             https://keybase.pub/marcopolo/index.html
+    ## 13       loading demo.mov       file     https://keybase.pub/marcopolo/loading%20demo.mov
+    ## 14 signal_fingerprint.txt       file https://keybase.pub/marcopolo/signal_fingerprint.txt
+    ## 15                 slides       file                 https://keybase.pub/marcopolo/slides
     ## # ... with 1 more variables: raw_url <chr>
 
 ``` r
 kb_list_files("marcopolo", pattern="\\.txt")
 ```
 
-    ## # A tibble: 2 × 4
+    ## # A tibble: 2 x 4
     ##               entry_name entry_type                                            entry_url
     ##                    <chr>      <chr>                                                <chr>
     ## 1       banana-bread.txt       file       https://keybase.pub/marcopolo/banana-bread.txt
@@ -124,7 +145,7 @@ kb_list_files("marcopolo", pattern="\\.txt")
 kb_list_files("hrbrmstr", "data")
 ```
 
-    ## # A tibble: 3 × 4
+    ## # A tibble: 3 x 4
     ##    entry_name entry_type                                     entry_url                                       raw_url
     ##         <chr>      <chr>                                         <chr>                                         <chr>
     ## 1   Rlogo.png       file   https://keybase.pub/hrbrmstr/data/Rlogo.png   https://hrbrmstr.keybase.pub/data/Rlogo.png
@@ -244,7 +265,7 @@ kb_list_files("hrbrmstr", "data", pattern = ".*.png") %>%
   select(raw_url)
 ```
 
-    ## # A tibble: 1 × 1
+    ## # A tibble: 1 x 1
     ##                                       raw_url
     ##                                         <chr>
     ## 1 https://hrbrmstr.keybase.pub/data/Rlogo.png
@@ -265,7 +286,7 @@ library(testthat)
 date()
 ```
 
-    ## [1] "Sat Mar 18 08:40:54 2017"
+    ## [1] "Thu Sep  7 07:18:22 2017"
 
 ``` r
 test_dir("tests/")
