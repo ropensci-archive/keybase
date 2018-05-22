@@ -48,7 +48,7 @@ Diagnostics:
 ### Installation
 
 ```{r eval=FALSE}
-devtools::install_github("hrbrmstr/keybase")
+devtools::install_github("ropenscilabs/keybase")
 ```
 
 ```{r message=FALSE, warning=FALSE, error=FALSE, include=FALSE}

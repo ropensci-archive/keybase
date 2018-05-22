@@ -11,8 +11,10 @@
 #' @md
 #' @name keybase
 #' @docType package
+#' @author Ildiko Czeller (czeildi@@gmail.com)
+#' @author Karthik Ram (karthik.ram@@gmail.com)
 #' @author Bob Rudis (bob@@rud.is)
-#' @import purrr scrypt getPass gpg
+#' @import purrr getPass gpg
 #' @importFrom httr GET content stop_for_status verbose add_headers
 #' @importFrom jsonlite fromJSON
 #' @importFrom tibble as_tibble data_frame

@@ -15,5 +15,9 @@ There's also a thin but useful R wrapper around many of they \code{keybase} comm
 utility functions.
 }
 \author{
+Ildiko Czeller (czeildi@gmail.com)
+
+Karthik Ram (karthik.ram@gmail.com)
+
 Bob Rudis (bob@rud.is)
 }
