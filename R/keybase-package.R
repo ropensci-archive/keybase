@@ -14,6 +14,7 @@
 #' @author Ildiko Czeller (czeildi@@gmail.com)
 #' @author Karthik Ram (karthik.ram@@gmail.com)
 #' @author Bob Rudis (bob@@rud.is)
+#' @author Kara Woo
 #' @import purrr getPass gpg
 #' @importFrom httr GET content stop_for_status verbose add_headers
 #' @importFrom jsonlite fromJSON
